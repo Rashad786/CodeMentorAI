@@ -6,6 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.errors.GitAPIException;
 import org.eclipse.jgit.api.errors.TransportException;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
@@ -16,7 +17,8 @@ import java.nio.file.Paths;
 @Slf4j
 public class GitService {
 
-    private static final String CLONE_DIRECTORY = "repositories";
+    @Value("${CLONE_DIRECTORY}")
+    private String CLONE_DIRECTORY;
 
     public CloneRepositoryResponse cloneRepository(String url) {
 
